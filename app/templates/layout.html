@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- INICIO: GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+    <!-- FIN: GOOGLE FONTS -->
+
+    <!-- INICIO: STYLESHEET -->
+    <link rel="stylesheet" href="{{ url_for('kindle.static', filename='../static/css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('kindle.static', filename='../static/css/normalizer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('kindle.static', filename='../static/css/icons.css') }}">
+    <!-- FIN: STYLESHEET -->
+
+    <title>{{ title }}</title>
+</head>
+<body>
+
+    <div id="particles-js">
+
+    </div>
+
+    <!-- INICIO: HERO -->
+    <div class="hero__container">
+        <div class="cover__container">
+            <p>Kindle Notes API</p>
+            <svg xmlns="http://www.w3.org/2000/svg" class="book-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <path d="M3 6a9 9 0 0 1 9 0a9 9 0 0 1 9 0" />
+                <path d="M3 6l0 13" />
+                <path d="M12 6l0 13" />
+                <path d="M21 6l0 13" />
+            </svg>
+            
+            <nav class="nav__container">
+                {% if request.path == '/home' %}
+                    <a href="{{ url_for('kindle.books') }}" class="nav-option">Books</a>
+                    <!-- <a href="{{ url_for('kindle.notes') }}" class="nav-option">Notes</a> -->
+                {% elif request.path == '/books' %}
+                    <a href="{{ url_for('kindle.home') }}" class="nav-option">Home</a>
+                    <!-- <a href="{{ url_for('kindle.notes') }}" class="nav-option">Notes</a> -->
+                {% elif request.path == '/notes' %}
+                    <a href="{{ url_for('kindle.home') }}" class="{{ url_for('kindle.home') }}">Home</a>
+                    <a href="{{ url_for('kindle.books') }}" class="{{ url_for('kindle.books') }}">Books</a>
+                {% else %}
+                    <h1 style="color: white">Hello world!</h1>
+                {% endif %}
+            </nav>
+        </div>
+
+    </div>
+    <!-- FIN: HERO -->
+
+
+    {% block content %}
+
+    {% endblock content %}
+
+    
+
+    <!-- INICIO: SCRIPTS -->
+    <script src="{{ url_for('kindle.static', filename='../static/js/particles.min.js') }} "></script>
+    <script src="{{ url_for('kindle.static', filename='../static/js/app.js') }}"></script>
+    <!-- FIN: SCRIPTS -->
+</body>
+</html>

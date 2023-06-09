@@ -1,0 +1,416 @@
+:root {
+    /* FUENTES */
+    --font-main: 'Poiret One', cursive, 'Sans-serif';
+
+    /* PALETA 1: */
+    --black: #000000;
+    --white: #FFFFFF;
+    --green_glow: #00FF00;
+    --green_dark: #32CD32;
+    --green_acid: #7FFF00;
+    --purple_alien: rgba(128, 0, 128, .2);
+    --pink_alien: rgba(255, 0, 255, .2);
+    --yellow_acid: #FFFF00;
+    --blue_aliem: #00FFFF;
+    --gray_alien: #808080;
+    
+    /* PALETA 2: */
+    --color1: #140126;
+    --color2: #210240;
+    --color3: #310273;
+    --color4: #260259;
+    --color5: #3703A6;
+    --color6: #AC10C9;
+    --color7: #EDBEE3;
+    --color8: #8E57C9;
+}
+
+
+html {
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* INICIO: PARTICLES LIBRARY */
+#particles-js {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+    background-color: #000000;
+}
+/* FIN: PARTICLES LIBRARY */
+
+
+
+/* INICIO: HERO */
+.hero__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 300px;
+    padding: 4rem 4rem 0 4rem;
+    font-family: var(--font-main);
+}
+
+.cover__container {
+    border: 1px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: rgba(86, 35, 106, 0.2);
+    border-radius: 15px;
+}
+
+.cover__container p {
+    color: white;
+    font-family: inherit;
+    font-size: 5rem;
+    margin: 4rem 4rem 2rem 4rem;
+}
+
+.book-icon {
+    width: 80px;
+    height: 80px;
+    stroke: var(--white);
+    stroke-width: .3px;
+    margin-bottom: 2rem;
+}
+
+.nav__container {
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50%;
+    margin-bottom: 2rem;
+    gap: 8rem;
+}
+
+.nav__container a {
+    font-family: inherit;
+    font-size: 3rem;
+    color: white;
+    text-decoration: none;
+}
+/* FIN: HERO */
+
+
+
+/* INICIO: HEADER BOOK / ADD */
+.header__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin-top: 7rem;
+    margin-bottom: 4rem;
+    padding: 0 4rem 0 4rem;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    width: 50vw;
+    height: 100%;
+    font-family: var(--font-main);
+    background-color: rgba(86, 35, 106, 0.2);
+    border-radius: 15px;
+    gap: 3rem;
+}
+
+.header-title {
+    color: white;
+    font-size: 4rem;
+    
+}
+/* FIN: HEADER BOOK / ADD*/
+
+
+
+
+/* INICIO: BOOKS LIST */
+.bookList__container {
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 50vw;
+    overflow: scroll;
+    height: 250px;
+}
+
+.book-content {
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 400px;
+    margin: 0 4rem 4rem;
+}
+
+.book-bibliographic__container {
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 150px;
+    font-family: var(--font-main);
+    color: white;
+    border-radius: 15px;
+    background-color: var(--pink_alien);
+}
+
+.book-title {
+    font-family: inherit;
+    font-size: 2.5rem;
+    color: inherit;
+}
+
+.book-author {
+    font-family: inherit;
+    font-size: 1.5rem;
+    color: inherit;
+}
+
+.book-options__container {
+    border: 1px solid white;
+    width: 150px;
+    border-radius: 15px;
+    background-color: var(--purple_alien);
+}
+
+.book-optionsList {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-rows: repeat(2 1fr); */
+}
+
+.book-option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    list-style: none;
+}
+
+.book-notesLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.book-notesLink a {
+    text-decoration: none;
+    color: rgb(179, 18, 194);
+    font-family: inherit;
+    font-size: 2rem;
+    justify-content: end;
+}
+
+/* FIN: BOOKS LIST */
+
+
+
+/* INICIO: NOTES LIST */
+.header-notes__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    margin-top: 7rem;
+    margin-bottom: 4rem;
+    padding: 0 4rem 0 4rem;
+}
+
+.header-notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    width: 50vw;
+    height: 100%;
+    font-family: var(--font-main);
+    background-color: rgba(86, 35, 106, 0.2);
+    border-radius: 15px;
+    gap: 1rem;
+}
+
+.note-bookTitle {
+    font-family: var(--font-main);
+    font-size: 2.5rem;
+    color: white;
+}
+
+.note-bookAuthor {
+    font-family: var(--font-main);
+    font-size: 1.5rem;
+    color: white;
+}
+
+
+.notes__container {
+    /* border: 1px solid white; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    width: 50vw;
+    overflow: scroll;
+    height: 250px;
+}
+
+.note-content {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    min-height: 90px;
+    margin: 0 4rem 4rem;
+    border-radius: 15px;
+    background-color: var(--pink_alien);
+    padding: 2rem;
+    overflow: scroll;
+}
+
+.note-text {
+    color: white;
+    font-family: var(--font-main);
+    font-size: 2rem;
+}
+/* FIN: NOTES LIST */
+
+
+/* INICIO: SPECIFIC FORM */
+.optionalForm__container {
+    /* background-color: teal; */
+    display: flex;
+    justify-content: center;
+    height: auto;
+    margin-bottom: 4rem;
+}
+
+.bookForm__container {
+    border: 1px solid white;
+    background-color: rgba(86, 35, 106, 0.2);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    width: 50vw;
+    padding: 3rem;
+}
+
+.bookForm {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.button-submit__container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(113, 16, 169);
+    width: auto;
+    height: auto;
+    font-family: var(--font-main);
+    font-size: 1.5rem;
+    color: white;
+    padding: 1rem;
+    border-radius: 5px;
+    border: .5px solid white;
+}
+
+
+/* ******** */
+
+
+.formField-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 1rem;
+
+}
+
+.formField-label {
+    color: white;
+    font-family: var(--font-main);
+    font-size: 2rem;
+    
+}
+
+.formField-input {
+    border: none;
+    width: auto;
+    margin-left: 1rem;
+}
+
+.formField-error {
+
+}
+
+.bookForm-details__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.detail-box {
+    display: flex;
+    border-radius: 10px;
+    
+}
+
+.detail-name {
+    background-color:  rgba(113, 16, 169, .3);
+    font-family: var(--font-main);
+    font-size: 2rem;
+    color: white;
+    padding: 1rem;
+}
+
+.detail-text {
+    font-family: var(--font-main);
+    font-size: 2rem;
+    color: white;
+    margin-left: 1rem;
+    padding: 1rem;
+}
+
+
+/* FIN: SPECIFIC FORM  */
+
+

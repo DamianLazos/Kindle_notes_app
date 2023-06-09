@@ -1,0 +1,117 @@
+{% from "macros/svg.html" import selectIcon %}
+{% from "macros/form.html" import bookFormFormatter %}
+
+
+{% macro bookIndividual(book, bookID) %}
+    <div class="book-content">
+        <div class="book-bibliographic__container">
+            <span class="book-title">{{book.name}}</span>
+            <span class="book-author">{{book.author}}<span>
+            <span class="book-notesLink"><a href="{{ url_for('kindle.notes', bookID=bookID) }}">View Notes</a></span>
+        </div>
+
+
+        <div class="book-options__container">
+            <ul class="book-optionsList">
+                <li class="book-option" title="Add notes">
+                    <a href="{{ url_for('kindle.books', option='notes', bookID=bookID) }}">
+                        {{selectIcon('notes')}}
+                    </a>
+                </li>
+
+                <li class="book-option" title="View details">
+                    <a href="{{ url_for('kindle.books', option='details', bookID=bookID) }}">
+                        {{selectIcon('details')}}
+                    </a>
+                </li>
+
+                <li class="book-option" title="Edit info">
+                    <a href="{{ url_for('kindle.books', option='edit', bookID=bookID) }}">
+                        {{selectIcon('edit')}}
+                    </a>
+                </li>
+
+                <li class="book-option" title="delete">
+                    <a href="{{ url_for('kindle.books', option='delete', bookID=bookID) }}">
+                        {{selectIcon('delete')}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+{% endmacro %}
+
+
+
+{% macro optionalForm(option, bookID, bookDetails, form) %}
+    {% if option == 'add' %}
+        <div class="optionalForm__container">
+            <div class="bookForm__container">
+                <form action="{{ url_for('kindle.books', option='add') }}" method="POST" class="bookForm">
+                    <span> {{ form.hidden_tag() }}
+                    {{ bookFormFormatter(form.name) }}
+                    {{ bookFormFormatter(form.author) }}
+                    <div class="button-submit__container">{{ form.submit(class="button") }}</div>
+                </form>
+            </div>
+        </div>
+
+    {% elif option == 'notes' %}
+        <div class="optionalForm__container">
+            <div class="bookForm__container">
+                <form action="{{ url_for('kindle.books', option='notes', bookID=bookID) }}" method="POST" class="bookForm" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                    {{ bookFormFormatter(form.notesFile) }}
+                    <div class="button-submit__container">{{ form.submit(class="button") }}</div>
+                </form>
+            </div>
+        </div>
+
+    {% elif option == 'details' %}
+        <div class="optionalForm__container">
+            <div class="bookForm-details__container">
+                <div class="detail-box">
+                    <span class="detail-name">Title:</span>
+                    <span class="detail-text">{{bookDetails.name}}</span>
+                </div>
+                
+                <div class="detail-box">
+                    <span class="detail-name">Author:</span>
+                    <span class="detail-text">{{bookDetails.author}}</span>
+                </div>
+        
+
+                <div class="detail-box">
+                    <span class="detail-name">Year:</span>
+                    <span class="detail-text">{{bookDetails.year}}</span>
+                </div>
+        
+                <div class="detail-box">
+                    <span class="detail-name">Original Language:</span>
+                    <span class="detail-text">{{bookDetails.original_language}}</span>
+                </div>
+        
+                <div class="detail-box">
+                    <span class="detail-name">Description:</span>
+                    <span class="detail-text">{{bookDetails.description}}</span>
+                </div>
+            </div>
+        </div>
+
+    {% elif option == 'edit' %}
+        <div class="optionalForm__container">
+            <div class="bookForm__container">
+                <form action="{{ url_for('kindle.books', option='edit', bookID=bookID) }}" method="POST" class="bookForm">
+                    {{ form.hidden_tag() }}
+                    {{ bookFormFormatter(form.name) }}
+                    {{ bookFormFormatter(form.author) }}
+                    {{ bookFormFormatter(form.year) }}
+                    {{ bookFormFormatter(form.original_language) }}
+                    {{ bookFormFormatter(form.description) }}
+                    <div class="button-submit__container">{{ form.submit(class="button") }}</div>
+                </form>
+            </div>
+        </div>
+
+    {% endif %}
+{% endmacro %}

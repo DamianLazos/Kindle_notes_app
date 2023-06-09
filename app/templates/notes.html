@@ -1,0 +1,26 @@
+{% from "macros/note.html" import noteIndividual %}
+{% extends 'layout.html' %}
+
+
+{% block content %}
+<!-- INICIO: HEADER BOOK NAME -->
+    <header class="header-notes__container">
+        <div class="header-notes">
+            <span class="note-bookTitle"> {{ book.name }} </span>
+            <span class="note-bookAuthor"> {{ book.author }} </span>
+        </div>
+    </header>
+<!-- FIN: HEADER BOOK NAME -->
+
+
+
+<!-- INICIO: NOTES LIST -->
+    <div class="notes__container">
+        {% for note in notes %}
+            {{ noteIndividual(note) }}
+        {% endfor %}
+    </div>
+<!-- FIN: NOTES LIST -->
+
+
+{% endblock %}

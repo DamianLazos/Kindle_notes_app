@@ -1,0 +1,40 @@
+{% from "macros/form.html" import bookFormFormatter %}
+{% from "macros/svg.html" import selectIcon%}
+{% from "macros/book.html" import bookIndividual %}
+{% from "macros/book.html" import optionalForm %}
+{% extends 'layout.html' %}
+
+
+{% block content %}
+    <!-- INICIO: HEADER BOOK / ADD BUTTON -->
+    <header class="header__container">
+        <div class="header">
+            <h1 class="header-title">Books List</h1>
+            <a href="{{ url_for('kindle.books', option='add') }}">
+                {{ selectIcon('add', 'add-icon') }}
+            </a>
+        </div>
+    </header>
+    <!-- FIN: HEADER BOOK / ADD BUTTON -->
+
+
+
+    <!-- INICIO: SPECIFIC BOOK FORM -->
+    {% if request.args.get('option') %}
+        {% set option = request.args.get('option') %}
+        {% set bookID = request.args.get('bookID') %}
+            {{ optionalForm(option, bookID, bookDetails, form) }}
+    {% endif %}
+    <!-- FIN: SPECIFIC BOOK FORM -->
+
+
+
+    <!-- INICIO: BOOKS LIST -->
+    <div class="bookList__container">
+        {% for book in bookList %}
+            {% set bookID = book._id %}
+            {{ bookIndividual(book, bookID) }}
+        {% endfor %}
+    </div>
+    <!-- FIN: BOOKS LIST -->
+{% endblock %}

@@ -1,0 +1,10 @@
+{% macro bookFormFormatter(formField) %}
+    <div class="formField-box">
+        {{ formField.label(class="formField-label") }}
+        {{ formField(class="formField-label") }}
+
+        {% if error in formField.errors %}
+            <span class="formField-error"> {{ error }}</span>
+        {% endif %}
+    </div>
+{% endmacro %}
